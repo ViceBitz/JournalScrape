@@ -1,8 +1,8 @@
 """
-JournoScrape Main Driver
+JournalScrape Main Driver
 
 @author Victor Gong
-@version 7/27/2024
+@version 10/26/2024
 """
 
 import csv
@@ -379,6 +379,12 @@ def createCategoryDict():
    for category in list(catDict.keys()):
       catDict[category][1] /= catDict[category][0]
       if catDict[category][0] < 20: del catDict[category] #Delete outlier categories
+   
+   #**Group climate change into environmental issues
+   catDict["environmental issues"][1] = catDict["environmental issues"][1] * catDict["environmental issues"][0] + catDict["climate change"][1] * catDict["climate change"][0]
+   catDict["environmental issues"][0] += catDict["climate change"][0]
+   catDict["environmental issues"][1] /= catDict["environmental issues"][0]
+   del catDict["climate change"]
 
    #Write to category stats file
    with open(catStatsFileName, "w") as csvF:
@@ -728,7 +734,7 @@ organizePoliticsByState()
 organizePoliticsByParty()
 organizeFullPolitics()
 #generatePublicationsMapByCity(mode="default",writeToFile=True)
-Visualizer.showWordCloud(catDict)
+#Visualizer.showWordCloud(catDict)
 
 
 """
