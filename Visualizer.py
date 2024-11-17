@@ -10,11 +10,12 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
 """
-Tool to help visualize cities on the U.S. map. Takes the longitude and latitude of
-each city along with other information and creates a map scatter plot.
+Tool to help visualize data. Takes the longitude and latitude of cities on the U.S. map along
+with political ratings and creates a map scatter plot. Also constructs a WordCloud with frequency
+and political lean of topic list.
 
 @author Victor Gong
-@version 7/27/2024
+@version 11/16/2024
 """
 
 #Location data files
@@ -384,7 +385,7 @@ def showWordCloud(wordTable): #Takes a list in the format: [(word, frequency, av
    global wordCloudTable
    wordCloudTable = wordTable #Make accessible to color function
    
-   wc = WordCloud(background_color="black", width=1250, height=1250, relative_scaling=0.1, collocations=False).generate_from_frequencies(freqTable)
+   wc = WordCloud(background_color="black", width=1250, height=1250, relative_scaling=0.15, collocations=False, margin=30).generate_from_frequencies(freqTable)
    plt.imshow(wc.recolor(color_func=wordCloud_color_func))
    plt.axis("off")
    plt.grid(visible=False)
