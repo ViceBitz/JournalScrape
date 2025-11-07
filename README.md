@@ -8,7 +8,7 @@ This social-scraping framework consists of three key stages:
 2.  Political Filtering: eliminating politically neutral articles from consideration
 3.   NLP Analysis: using LLMs to analyze summarized article text, categorizing topics and calculating political lean score
 
-targeting three common sections (opinions, features, news), and scraping headlines & body text from ~30 latest article of each section
+that target three common sections (opinions, features, news), and scraping headlines & body text from ~30 latest article of each section
 
 ---
 ## Usage
